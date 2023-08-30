@@ -1,0 +1,6 @@
+a = int(input('Ange tal: \n a = '))
+b = int(input('b = '))
+c = int(input('c = '))
+d = int(input('d = '))
+e = int(input('e = '))
+print('Det högsta inmatde talet är ' , max(a,b,c,d,e))

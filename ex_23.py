@@ -1,0 +1,6 @@
+print('Dator> Hallå!')
+print('Dator> Vad är ditt förnamn?')
+förnamn = input('du> ')
+print('Dator> Vad är ditt efternamn?')
+efternamn = input('du> ')
+print('Trevligt att traäffas' , förnamn , efternamn)
