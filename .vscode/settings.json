@@ -1,3 +1,4 @@
 {
-    "CodeGPT.apiKey": "HuggingFace"
+    "CodeGPT.apiKey": "Cohere",
+    "CodeGPT.model": "command-medium-nightly"
 }
