@@ -18,7 +18,7 @@ dryck = vanl_korvar_x2 + vanl_korvar_x3 + veg_korvar_x2 + veg_korvar_x3
 print('| Dryck:        ',dryck, 'drickor')
 print('----------------------')
 summa = vanl_korvar * 20.95 + veg_korvar * 34.95 + dryck * 13.95
-print('|', summa, 'SEK')
+print('|', round(summa, 1), 'SEK')
 print('----------------------')
 
 
