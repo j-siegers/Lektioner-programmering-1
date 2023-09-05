@@ -6,7 +6,7 @@ text_ny = []
 for index, bokstav in enumerate(text):
     text_ny.append(text[index])
     if bokstav in konsonanter:
-        text_ny.pop()  # Tar bort bokstav och ersätter den sedan med nästa rad.
-        text_ny.append(text[index]+'o'+text[index])
+        text_ny.pop()  # Tar bort konsonanten och ersätter den sedan med nästa rad.
+        text_ny.append(text[index]+'o'+text[index])  # Lägger till konsonanten + O
 text_str = ''.join(text_ny)
 print('Rövarspråk \t> ', text_str)
