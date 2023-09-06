@@ -1,10 +1,16 @@
 import time
 for i in range(10):
-    print(str(i), end='')
+    print('-', end='')
     time.sleep(0.5)
 print('\n')
-name = 'Lars'
-age = 50
-print(f'{name} är {age} år gammal')
+
+my_list = [" ̶", "\\", "|", "/"]
 for i in range(10):
-    print(i)
+    print(f"\r{my_list[0]}", end="")
+    time.sleep(0.3)
+    print(f"\r{my_list[1]}", end="")
+    time.sleep(0.3)
+    print(f"\r{my_list[2]}", end="")
+    time.sleep(0.3)
+    print(f"\r{my_list[3]}", end="")
+    time.sleep(0.3)
