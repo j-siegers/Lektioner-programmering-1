@@ -5,7 +5,7 @@ for i in range(10):
 print('\n')
 
 my_list = [" ̶", "\\", "|", "/"]
-for i in range(10):
+for i in range(4):
     print(f"\r{my_list[0]}", end="")
     time.sleep(0.3)
     print(f"\r{my_list[1]}", end="")
