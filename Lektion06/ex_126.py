@@ -60,6 +60,7 @@ while True:
         else:
             print('The menu choice does not exist')
         input('Press enter to continue...')
+        os.system('cls')
 
     except:
         print('Error: Unknown note!')
