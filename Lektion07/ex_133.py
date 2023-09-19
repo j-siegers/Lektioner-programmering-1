@@ -10,6 +10,7 @@ for i in artists_dict['artists']:
 print('-----------------')
 print('Select artist:')
 select = input('> ')
+select = select.title()
 print('-----------------')
 for i in artists_dict['artists']:
     if select == i['name']:
