@@ -89,4 +89,5 @@ while True:
             print("Felaktig inmatning. Du måste ange hemmalag, mål, bortalag och mål på en rad.")
             input('Tryck enter för att fortsätta')
     elif val == 'exit':
-        break
+        exit()
+

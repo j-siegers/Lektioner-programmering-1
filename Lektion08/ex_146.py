@@ -6,7 +6,7 @@ def print_table(result: list):
     for team in result:
         print('|', counter, '|', team['country'].ljust(13), '|', team['wins'], '|', team['draws'], '|',
               team['losses'], '|', team['goals for'], ' |', team['goals against'], ' |',
-              team['goals for'] - team['goals against'], ' |', team['wins'] * 3 + team['draws'], '|')
+              str(team['goals for'] - team['goals against']).rjust(2), '|', team['wins'] * 3 + team['draws'], '|')
         counter += 1
     print('-' * 52)
 
