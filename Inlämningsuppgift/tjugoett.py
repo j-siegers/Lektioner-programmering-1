@@ -35,55 +35,15 @@ class Card:
 
 # Klass som tar hand om den kortlek man spelar med för tillfället
 class Hand:
-    pass
 
-
-# Funktion för rensande av skärmen
-def clear():
-    if os.name == "nt":
-        os.system("cls")
-
-    elif os.name == "posix":
-        os.system("clear")
-
-
-# Objektet kort skapas och lagrar 2 listor med kortvärden
-kort = Card(card_names, card_values)
-# Hela kortleken sparas i attributet .kortlek
-kort.kortlek = Card.card_deck_creation(kort)
-# Här lagras kortleken med blandade kort
-kortlek_blandad = Card.card_deck_shuffle(kort.kortlek)
-
-# En dictonary som översätter kortvärden till poäng
-kort_varden = {
-    'Knekt': 11,
-    'Dam': 12,
-    'Kung': 13
-}
-# Spelarens poäng
-spelar_poang = 0
-ui_width = 30
-
-while True:
-    clear()
-    print('-' * ui_width)
-    print('|'.ljust(28), '|')
-    print('|', 'Välkommen till'.center(26), '|')
-    print('|', 'Kortspelet Tjugoett'.center(26), '|')
-    print('-' * ui_width)
-    print('| Siffrorna på korten\n| motsvarar deras värden och\n| knekt(11), dam(12), kung(13)\n| ess (1 eller 14)')
-    print('-' * ui_width)
-    print('| 1 | Börja spela')
-    print('| 2 | Avsluta')
-    print('-' * ui_width)
-    print(f'| Din poäng: {spelar_poang}')
-    print('-' * ui_width)
-    val = input('> ')
-
-    if val == '1':
+    @staticmethod
+    def kortlek():
         # Korten dras ett i taget från slutet av kortleken för att lättare matcha rätt indexvärde
         # vid borttagning av dragna kort
-        i = 51
+        # Värdena sätts till globala för att stanna kvar utanför metoden
+        global spelar_poang
+        global i
+
         while i > -1:
             print(f'Du drog: {kortlek_blandad[i][0]} {kortlek_blandad[i][1]}')
 
@@ -104,14 +64,78 @@ while True:
 
             kortlek_blandad.pop(i)  # Kortet tas bort från kortleken
             i -= 1  # Nedräkning av index för loopen
-            clear()
             print(f'Din poäng är: {spelar_poang}')
-            kort_val = input('Ett till kort? (j/n) > ').lower()
+            print('-' * ui_width)
+            kort_val = input('* Ett till kort? (j/n) > ').lower()
             if kort_val == 'j':
                 continue
             elif kort_val == 'n':
                 break
 
+
+# Funktion för rensande av skärmen
+def clear():
+    if os.name == "nt":
+        os.system("cls")
+
+    elif os.name == "posix":
+        os.system("clear")
+
+
+# Objektet kort skapas och lagrar 2 listor med kortvärden
+kort = Card(card_names, card_values)
+
+# Hela kortleken sparas i attributet .kortlek
+kort.kortlek = Card.card_deck_creation(kort)
+
+# Här lagras kortleken med blandade kort
+kortlek_blandad = Card.card_deck_shuffle(kort.kortlek)
+
+# En dictonary som översätter kortvärden till poäng
+kort_varden = {
+    'Knekt': 11,
+    'Dam': 12,
+    'Kung': 13
+}
+# Spelarens poäng
+spelar_poang = 0
+i = 51  # Räknare för kortleken
+ui_width = 30
+
+# UI skrivs ut
+while True:
+    clear()
+    print('-' * ui_width)
+    print('|'.ljust(28), '|')
+    print('|', 'Välkommen till'.center(26), '|')
+    print('|', 'Kortspelet Tjugoett'.center(26), '|')
+    print('-' * ui_width)
+    print('| Siffrorna på korten\n| motsvarar deras värden och\n| knekt(11), dam(12), kung(13)\n| ess (1 eller 14)')
+    print('-' * ui_width)
+    print('| 1 | Börja spela')
+    print('| 2 | Avsluta')
+    print('-' * ui_width)
+    print(f'| Din poäng: {spelar_poang}')
+    print('-' * ui_width)
+    val = input('> ')
+
+    if val == '1':
+        Hand.kortlek()
+        if spelar_poang > 21:
+            print(f'\nDatorn vann! Du fick {spelar_poang} poäng')
+            print('-' * ui_width)
+            input('Tryck Enter för att fortsätta')
+            spelar_poang = 0
+        elif spelar_poang == 21:
+            print(f'\nDu vann! Du fick {spelar_poang} poäng')
+
+        elif spelar_poang < 21:
+            clear()
+            print(f'\nDu fick {spelar_poang} poäng')
+            print('Nu är det datorns tur.')
+            input('Enter')
+
     elif val == '2':
         print('Tack för att du spelade Tjugoett!')
+        print(len(kortlek_blandad))
         break
