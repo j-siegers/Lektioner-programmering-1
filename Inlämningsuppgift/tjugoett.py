@@ -19,7 +19,7 @@ class Card:
     def __str__(self):
         return f'{self.names}, {self.values}'
 
-    # Metod som vid anrop skapar en kortlek med alla 52 kort
+    # Metod som vid anrop skapar en lista med alla 52 kort från objektet
     def card_deck_creation(self):
         card_list = []
         for c_name in self.names:
